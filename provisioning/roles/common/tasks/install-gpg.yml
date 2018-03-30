@@ -1,0 +1,7 @@
+---
+- name: install gpg
+  apt:
+    name: gnupg
+    state: present
+  become: yes
+  when: ansible_os_family == "Debian"
