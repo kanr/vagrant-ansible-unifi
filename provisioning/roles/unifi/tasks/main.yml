@@ -1,4 +1,10 @@
 # file: elkarbackup/main.yml
 
 #- include: dependencies.yml
-- include: unifi.yml
+- include: install-java.yml
+- include: install-ubnt.yml
+- include: install-unifi.yml
+- include: check-test.yml
+- include: disable-default-MongoDB.yml
+- include: update-snappyJava.yml
+- include: manage-services.yml
