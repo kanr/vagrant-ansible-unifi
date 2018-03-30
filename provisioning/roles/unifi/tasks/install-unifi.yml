@@ -1,0 +1,16 @@
+---
+- name: install unifi-controller packages
+  apt:
+    allow_unauthenticated: yes
+    name: "{{ item }}"
+    state: "{{ unifi_packages_state }}"
+    update_cache: yes
+  with_items: "{{ unifi_packages }}"
+  become: yes
+  notify:
+    - restart unifi
+
+- name: unifi installation
+  apt: pkg=unifi state=present
+  tags:
+    - unifi
