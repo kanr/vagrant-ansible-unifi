@@ -1,0 +1,9 @@
+---
+- name: disable mongodb default instance
+  lineinfile:
+    path: '{{ unifi_mongodb_config }}'
+    regexp: '^ENABLE_MONGODB='
+    line: 'ENABLE_MONGODB=no'
+  become: yes
+  notify:
+    - restart mongodb
