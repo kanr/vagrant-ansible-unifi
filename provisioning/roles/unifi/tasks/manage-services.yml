@@ -1,0 +1,8 @@
+---
+- name: manage services
+  service:
+    name: "{{ item }}"
+    state: "{{ unifi_services_state }}"
+    enabled: "{{ unifi_services_enabled }}"
+  become: yes
+  with_items: "{{ unifi_services }}"
