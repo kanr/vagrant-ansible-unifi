@@ -1,0 +1,9 @@
+---
+- name: update snappy java
+  get_url:
+    url: "{{ unifi_java_snappy_url }}"
+    checksum: "{{ unifi_java_snappy_checksum }}"
+    dest: "{{ unifi_java_snappy_file }}"
+  become: yes
+  notify:
+    - restart unifi
