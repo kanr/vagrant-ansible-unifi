@@ -17,6 +17,27 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
      vb.customize ["modifyvm", :id, "--memory", "512"]
   end
 
+  # Enable provisioning with a shell script.
+ config.vm.provision "shell", inline: <<-SHELL
+    apt-get install -y software-properties-common python-software-properties
+ SHELL
+
+#  config.vm.provision "shell", inline: <<-SHELL
+#      add-apt-repository ppa:openjdk-r/ppa -y
+#      apt-get update
+#      echo "\n----- Installing Java 8 ------\n"
+#      apt-get -y install openjdk-8-jre
+#    SHELL
+
+#   config.vm.provision "shell", inline: <<-SHELL
+#     echo 'deb http://www.ubnt.com/downloads/unifi/debian stable ubiquiti' \
+#     | sudo tee /etc/apt/sources.list.d/100-ubnt-unifi.list
+#     sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 06E85760C0A52C50
+#     apt-get update
+#     apt-get install -y unifi
+#   SHELL
+
+# Enable provisioning with ansible playbook
   config.vm.provision :ansible do |ansible|
     ansible.playbook = "provisioning/playbook.yml"
     ansible.inventory_path = "provisioning/hosts-vagrant"
