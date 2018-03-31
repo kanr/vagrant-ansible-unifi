@@ -22,12 +22,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     apt-get install -y software-properties-common python-software-properties
  SHELL
 
-#  config.vm.provision "shell", inline: <<-SHELL
-#      add-apt-repository ppa:openjdk-r/ppa -y
-#      apt-get update
-#      echo "\n----- Installing Java 8 ------\n"
-#      apt-get -y install openjdk-8-jre
-#    SHELL
+  config.vm.provision "shell", inline: <<-SHELL
+      add-apt-repository ppa:openjdk-r/ppa -y
+      apt-get update
+      echo "\n----- Installing Java 8 ------\n"
+      apt-get -y install openjdk-8-jre
+    SHELL
 
 #   config.vm.provision "shell", inline: <<-SHELL
 #     echo 'deb http://www.ubnt.com/downloads/unifi/debian stable ubiquiti' \
@@ -38,12 +38,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 #   SHELL
 
 # Enable provisioning with ansible playbook
-  config.vm.provision :ansible do |ansible|
-    ansible.playbook = "provisioning/playbook.yml"
-    ansible.inventory_path = "provisioning/hosts-vagrant"
-    ansible.limit = 'all'
-    ansible.host_key_checking = false
-    ansible.verbose = true
-  end
+#  config.vm.provision :ansible do |ansible|
+#    ansible.playbook = "provisioning/playbook.yml"
+#    ansible.inventory_path = "provisioning/hosts-vagrant"
+#    ansible.limit = 'all'
+#    ansible.host_key_checking = false
+#    ansible.verbose = true
+#  end
 
 end
