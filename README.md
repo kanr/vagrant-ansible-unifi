@@ -3,6 +3,7 @@ unifi-vm
 
 This project will help you deploying UniFi controller in a VirtualBox VM.
 
+[Unifi System Requirements](https://help.ubnt.com/hc/en-us/articles/115009221227-UniFi-Recommended-Minimum-System-Requirements)
 ## Required
  - VirtualBox 4.3 or greater
  - Vagrant 1.6 or greater
