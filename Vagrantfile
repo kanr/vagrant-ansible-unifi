@@ -5,7 +5,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "debian/jessie64"
+  config.vm.box = "geerlingguy/ubuntu1604"
   config.vm.network "forwarded_port", guest: 8080, host: 8080
   config.vm.network "forwarded_port", guest: 8443, host: 8443
   config.vm.network "private_network", ip: "192.168.33.12"
@@ -13,7 +13,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provider "virtualbox" do |vb|
      vb.gui = false
-     vb.name = "unifi"
+     vb.name = "unifi2"
      vb.customize ["modifyvm", :id, "--memory", "512"]
   end
 
@@ -37,6 +37,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
      apt-get install -y unifi
    SHELL
 
+   config.vm.provision "shell", inline: <<-SHELL
+    apt-get install openssl
+
+
+   SHELL
 # Enable provisioning with ansible playbook
 #  config.vm.provision :ansible do |ansible|
 #    ansible.playbook = "provisioning/playbook.yml"
