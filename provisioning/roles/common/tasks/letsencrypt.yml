@@ -7,13 +7,6 @@
     dest: /etc/httpd/ssl/sample.com.crt
   register: sample_com_challenge
 
-# Alternative first step:
-- name: Create a challenge for sample.com using a account key from hashi vault.
-  letsencrypt:
-    account_key_content: "{{ lookup('hashi_vault', 'secret=secret/account_private_key:value') }}"
-    csr: /etc/pki/cert/csr/sample.com.csr
-    fullchain_dest: /etc/httpd/ssl/sample.com-fullchain.crt
-  register: sample_com_challenge
 
 # Alternative first step:
 - name: Create a challenge for sample.com using a account key file.
@@ -80,7 +73,7 @@
 #     with_dict: sample_com_challenge.challenge_data_dns
 #     when: sample_com_challenge is changed
 
-# Java Cert 
+# Java Cert
 - name: Import SSL certificate from google.com to a given cacerts keystore
   java_cert:
     cert_url: google.com
