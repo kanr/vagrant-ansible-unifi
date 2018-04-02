@@ -26,3 +26,8 @@ Thanks to Vagrant configurations, **8080** and **8443** ports are forwarded to l
 ```
 http://localhost:8080
 ```
+
+if for any reason it is not running you can check the status of the unifi service by running:
+```
+systemctl status inifi
+```
