@@ -24,9 +24,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision "shell", inline: <<-SHELL
       add-apt-repository ppa:openjdk-r/ppa -y
+      add-apt-repository ppa:certbot/certbot -y
       apt-get update
       echo "\n----- Installing Java 8 ------\n"
-      apt-get -y install openjdk-8-jre
+      apt-get -y install openjdk-8-jre openssl python-certbot-apache
     SHELL
 
    config.vm.provision "shell", inline: <<-SHELL
@@ -38,7 +39,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
    SHELL
 
    config.vm.provision "shell", inline: <<-SHELL
-    apt-get install openssl
+    echo "\n--------Running Certbot--------------\n"
+    certbot register --agree-tos --email connor@lightspeedsys.com
+    certbot certonly --noninteractive --standalone -d example.com -d dev.hotspoters.com
 
 
    SHELL

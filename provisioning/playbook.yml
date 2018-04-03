@@ -3,7 +3,11 @@
   vars:
     - root_password: = "vagrant"
     # root_password: '$6$KCdCcMoj$DLdeFjXTivfhDgNsETkdlAsJjcDh.oKNmV7lDbQS7ZiFP7sO.e2QeP/jJgAJYwvZaS5r4Lmp.C18kQfAw5czj1'
+    - certbot_auto_renew_user: your_username_here
+    - certbot_auto_renew_minute: 20
+    - certbot_auto_renew_hour: 5
 
   roles:
+    - kanr.certbot 
     - { role: common, root_password: "{{ root_password }}" }
     - { role: unifi, version: stable}
