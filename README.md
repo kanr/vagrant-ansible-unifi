@@ -1,9 +1,10 @@
-unifi-vm
+UniFi Network Management Controller
 ========
 
-This project will help you deploying UniFi controller in a VirtualBox VM.
-
+This project will help you deploying UniFi Network Management Controller in a VirtualBox VM.
+[Unifi System Managment help](https://help.ubnt.com/hc/en-us/sections/200919140-UniFi-System-Management)
 [Unifi System Requirements](https://help.ubnt.com/hc/en-us/articles/115009221227-UniFi-Recommended-Minimum-System-Requirements)
+
 ## Required
  - VirtualBox 4.3 or greater
  - Vagrant 1.6 or greater
@@ -29,5 +30,5 @@ http://localhost:8080
 
 if for any reason it is not running you can check the status of the unifi service by running:
 ```
-systemctl status inifi
+systemctl status unifi
 ```
